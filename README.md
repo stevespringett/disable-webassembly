@@ -35,7 +35,7 @@ The WebAssembly specification does not address any of the above threats. Therefo
 browsers and have discountinued use of browsers that do not allow WASM to be disabled. To be fair, many of the threats 
 above also apply to Javascript, which **can** be statically analyzed or outright disabled.
 
-## How to Disable WebAssembly
+## Disabling Guidance
 
 **Edge**
 
@@ -45,16 +45,30 @@ Unknown. I do not use Windows so if someone knows the answer to this, please sub
 
 Enter about:config in the URL bar and change javascript.options.wasm to false
 
-**Chrome**
+**Chrome/Chromium**
 
-Enter chrome://flags/#enable-webassembly in the URL bar and change value to Disabled.
+Chrome must be launched with the following command-line argument: `--js-flags=--noexpose_wasm`. On Windows and Linux/Unix, simply appending the argument after the chrome executable is all that's required. For example:
+
+`chrome --js-flags=--noexpose_wasm`
+
+On macOS, the syntax is a bit different.
+
+```bash
+open /Applications/Google\ Chrome.app --args --js-flags=--noexpose_wasm
+```
+On Windows, modifying the registry may also be beneficial in order to maintain state between Chrome auto-updates.
+```ini
+HKEY_CLASSES_ROOT\ChromeHTML\shell\open\command
+HKEY_CLASSES_ROOT\http\shell\open\command
+HKEY_CLASSES_ROOT\https\shell\open\command
+```
+Uncheck the write permission on these keys so that the changes persist on next auto-update of Chrome. Thanks to @tophf for providing information about the flag and registry settings.
 
 **Brave**
 
-about:config functionality is not yet implemented, therefore, it is not possible to disable WASM at this time. 
-An enhancement request is proposed to provide Chrome-like flags. Refer to https://github.com/brave/browser-laptop/issues/545
+The Brave browser (Laptop edition) is based on Chromium and the same command-line argument works on Brave as well.
 
 **Safari**
 
 Safari does not have advanced about:config functionality and the Developer mode does not have an option to 
-disable WASM.
+disable WASM. If someone knows how to disable in Safari, please submit a pull request.
