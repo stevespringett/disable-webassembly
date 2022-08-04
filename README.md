@@ -35,6 +35,10 @@ The WebAssembly specification does not address any of the above threats. Therefo
 browsers and have discountinued use of browsers that do not allow WASM to be disabled. To be fair, many of the threats 
 above also apply to Javascript, which **can** be statically analyzed or outright disabled.
 
+## Checking for WASM support
+
+Refer to the code snippet in https://stackoverflow.com/a/47880734
+
 ## Disabling Guidance
 
 **FireFox**
