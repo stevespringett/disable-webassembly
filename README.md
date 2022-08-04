@@ -37,10 +37,6 @@ above also apply to Javascript, which **can** be statically analyzed or outright
 
 ## Disabling Guidance
 
-**Edge**
-
-Unknown. I do not use Windows so if someone knows the answer to this, please submit a pull request.
-
 **FireFox**
 
 Enter about:config in the URL bar and change javascript.options.wasm to false
@@ -67,6 +63,10 @@ Uncheck the write permission on these keys so that the changes persist on next a
 **Brave**
 
 The Brave browser (Laptop edition) is based on Chromium and the same command-line argument works on Brave as well.
+
+**Edge**
+
+Edge is also based on Chromium and the same flag works.
 
 **Safari**
 
